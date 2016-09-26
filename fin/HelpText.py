@@ -34,12 +34,13 @@ class HelpText(object):
                 long = item[0]
             try:
                 explain = substitute[key][1]
+                explain = explain.strip('#').strip()
             except TypeError:
                 explain = ""
             if short:
-                item = '-{short}, --{long} <{long}>        {explain}'.format(short=short, long=long, explain=explain)
+              item = '-{short}, --{long} <{long}> {explain:>20}'.format(short=short, long=long, explain=explain)
             else:
-                item = '--{long} <{long}>        {explain}'.format(long=long, explain=explain)
+              item = '--{long} <{long}> {explain:>20}'.format(long=long, explain=explain)
             text += '   ' + item + '\n'
         text += '    --help'
         self.options = text

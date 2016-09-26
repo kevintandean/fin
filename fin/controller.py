@@ -41,5 +41,5 @@ def main():
     if argu['--help']:
       print(helptext)
 
-    run_opts = config.run_options()
     import ipdb;ipdb.set_trace()
+    run_opts = config.run_options()
