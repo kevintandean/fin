@@ -41,27 +41,21 @@ class HelpText(object):
             else:
                 item = '--{long} <{long}>        {explain}'.format(long=long, explain=explain)
             text += '   ' + item + '\n'
+        text += '    --help'
         self.options = text
         return self.options
-
-def default_helptext():
-    helptext = HelpText()
-    helptext.add_usage('--fin')
-    usage = helptext.create_usage()
-    return usage
 
 def build_helptext(config):
     default = config.get_default()
     substitute = config.substitute
     helptext = HelpText()
     options = helptext.create_options(substitute)
-    helptext.add_usage('<service_name>', opt=True, arg=True)
+    helptext.add_usage('[options] <service_name>', opt=True, arg=True)
     for item in config.yaml()['services']:
         helptext.add_usage(item, opt=True, arg=True)
     helptext.add_usage('--help')
     usage = helptext.create_usage()
     helptext = usage + '\n\n' + options
-    helptext += '\n    --help'
     return helptext
 
 if __name__ == "__main__":

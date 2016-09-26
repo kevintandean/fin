@@ -18,7 +18,7 @@ import subprocess
 import fcntl
 import os
 from docopt import docopt
-from fin.HelpText import build_helptext, default_helptext
+from fin.HelpText import build_helptext
 from fin.Config import Config
 from subprocess import call, PIPE
 
@@ -35,10 +35,11 @@ def main():
         # helptext = build_helptext(config)
         config = Config('Fin.yaml')
     except FileNotFoundError:
-        raise FileNotFoundError("Fin.yaml can not be found in the current directory")
+        raise FileNotFoundError("Fin.yaml or default.yaml can not be found in the current directory")
     helptext = build_helptext(config)
     argu = docopt(helptext, help=False)
-    import ipdb;ipdb.set_trace()
     if argu['--help']:
       print(helptext)
 
+    run_opts = config.run_options()
+    import ipdb;ipdb.set_trace()
