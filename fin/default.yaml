@@ -1,0 +1,10 @@
+checkout:
+    ~/checkouts/trunk # path to checkout directory
+port:
+    70      # comment
+db-name:
+    db # dbname
+db-host:
+    dbh
+cmd:
+    bash

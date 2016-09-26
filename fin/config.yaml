@@ -1,0 +1,14 @@
+services:
+    name:
+        image: "{image__i}"
+        volumes:
+            - "~/{checkout__c}/trunk:/trunk"
+        ports:
+            - "{port__p}:{port__p}"
+        environment:
+            DB_NAME: "{db-name__d}" #database name connected
+            DB_HOST: "{db-host__h}"
+            HOST_URL: "{host-url}"
+        command: "{cmd}"
+
+
